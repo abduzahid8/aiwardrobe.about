@@ -4,22 +4,22 @@ const showcaseItems = [
   {
     label: 'App Interface',
     desc: 'Main dashboard with your digitized wardrobe',
-    placeholder: '/images/app-screen-1.png',
+    color: '#fde047',
   },
   {
     label: 'Outfit Generator',
     desc: 'AI-generated outfit combinations',
-    placeholder: '/images/app-screen-2.png',
+    color: '#fcd34d',
   },
   {
     label: 'Size Predictor',
     desc: 'Perfect fit from a single photo',
-    placeholder: '/images/app-screen-3.png',
+    color: '#fbbf24',
   },
   {
     label: 'Style Aesthetics',
     desc: 'Old Money, Quiet Luxury, Minimalist',
-    placeholder: '/images/app-screen-4.png',
+    color: '#f59e0b',
   },
 ];
 
@@ -38,38 +38,32 @@ export function ProductShowcase() {
           <article
             key={item.label}
             className="signal-card glass-item flex flex-col gap-4 overflow-hidden"
-            style={{ '--signal-color': '#fde047', minHeight: '28rem' }}
+            style={{ '--signal-color': item.color, minHeight: '36rem' }}
           >
-            <div className="relative -mx-4 -mt-4 aspect-[4/3] w-[calc(100%+2rem)] overflow-hidden rounded-xl border border-white/10 bg-white/5">
-              {/* TODO: Replace with your project image */}
-              <img
-                src={item.placeholder}
-                alt={item.label}
-                className="h-full w-full object-cover opacity-100"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.parentElement.classList.add('flex', 'items-center', 'justify-center');
-                }}
-              />
-              {/* Placeholder overlay when image is missing */}
-              <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 text-white/10">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="opacity-30"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <polyline points="21 15 16 10 5 21" />
-                </svg>
-                <span className="text-xs font-medium uppercase tracking-wider">
-                  Insert: {item.label}
-                </span>
+            <div className="relative -mx-4 -mt-4 aspect-[4/3] w-[calc(100%+2rem)] overflow-hidden rounded-xl border border-white/10" style={{ backgroundColor: `${item.color}20` }}>
+              {/* Colored placeholder */}
+              <div className="flex h-full w-full items-center justify-center">
+                <div className="flex flex-col items-center gap-4 text-center">
+                  <div className="rounded-2xl p-8" style={{ backgroundColor: item.color }}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="64"
+                      height="64"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      className="text-black"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                      <circle cx="8.5" cy="8.5" r="1.5" />
+                      <polyline points="21 15 16 10 5 21" />
+                    </svg>
+                  </div>
+                  <span className="text-lg font-semibold uppercase tracking-wider" style={{ color: item.color }}>
+                    {item.label}
+                  </span>
+                </div>
               </div>
             </div>
             <div className="flex flex-col gap-1">
