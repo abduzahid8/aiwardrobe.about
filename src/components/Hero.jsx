@@ -28,7 +28,9 @@ export function Hero() {
     setLoading(true);
     setStatus('idle');
     try {
-      const res = await fetch('/api/waitlist', {
+      // Using Formspree for email collection
+      // Replace 'YOUR_FORMSPREE_FORM_ID' with your actual Formspree form ID
+      const res = await fetch('https://formspree.io/f/YOUR_FORMSPREE_FORM_ID', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: normalized }),
